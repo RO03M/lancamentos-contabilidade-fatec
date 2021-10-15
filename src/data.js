@@ -1,0 +1,81 @@
+export const LEDGER_REFS = [
+    "Adiantamento a Fornecedor", 
+    "Adiantamentos a Funcionários", 
+    "Água", 
+    "Aluguel", 
+    "Assinaturas de Revistas", 
+    "Assinaturas e Anuidades a Pagar", 
+    "Bancos", 
+    "Bancos conta Movimento", 
+    "Caixa", 
+    "Capital Social", 
+    "Clientes", 
+    "Clientes (LP)", 
+    "Cofins", 
+    "Comissões sobre Vendas", 
+    "Computadores e Periféricos", 
+    "Correio", 
+    "CSLL", 
+    "Custos das Mercadorias Vendidas", 
+    "Depreciação", 
+    "Depreciação Acumulada", 
+    "Despesas Financeiras", 
+    "Devolução de Vendas", 
+    "Empréstimos Bancários", 
+    "Energia Elétrica", 
+    "Equipamentos Telefônicos", 
+    "Fornecedores", 
+    "Ganhos na Alienação do Imobilizado", 
+    "ICMS sobre Vendas", 
+    "IRPJ", 
+    "IRPJ - Adicional", 
+    "Lucro ou Prejuízo Acumulado", 
+    "Manutenção e Reparos", 
+    "Máquinas e Equipamentos", 
+    "Material de Escritório", 
+    "Mercadoria para Revenda", 
+    "Móveis e Utensílios", 
+    "Participação em Fundos de Investimentos", 
+    "Perdas na Alienação do Imobilizado", 
+    "Pesquisa e Desenvolvimento de Produtos", 
+    "Pis", 
+    "Poupança", 
+    "Prédios", 
+    "Prédios em Construção", 
+    "Pró-Labore", 
+    "Propaganda e Publicidade", 
+    "Receita Financeiras", 
+    "Refeições e Lanches", 
+    "Reservas de Capital", 
+    "Reservas de Lucro", 
+    "Reservas de Reavaliação", 
+    "Revistas e Publicações", 
+    "Salários à Pagar", 
+    "Salários e Ordenados", 
+    "Seguros", 
+    "Seguros à Pagar", 
+    "Seguros à Vencer", 
+    "Telefone", 
+    "Terrenos", 
+    "Títulos à Receber", 
+    "Transporte de Pessoal", 
+    "Valor Líquido de Bens Baixado", 
+    "Veículos", 
+    "Venda", 
+    "Vendas Canceladas"
+];
+
+export const BPDRE_OBJ = {
+    ativo: {
+        circulante: {
+            key: "Circulante",
+            disponivel: [
+                {key: "caixa", value: "Caixa"},
+                {key: "bancos", value: "Bancos"}
+            ],
+            creditos: [
+                {key: "clientes", value: "Clientes"}
+            ]
+        }
+    }
+};

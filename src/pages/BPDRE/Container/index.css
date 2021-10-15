@@ -1,0 +1,8 @@
+.bpdre-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.bpdre-children {
+    margin-left: 15px;
+}
