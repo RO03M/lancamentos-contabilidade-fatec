@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Card from "./Card";
 
+import "./index.css";
+
 const Reasons = () => {
 
     const [reasonList, SetReasonList] = useState({});
@@ -30,7 +32,7 @@ const Reasons = () => {
 
     return (
         <div className="reason">
-            <div className="w100 flex align-center fdcolumn">
+            <div className="reason-cards-list">
                 {(() => {
                     let cards = [];
                     for (const [key, value] of Object.entries(reasonList)) {

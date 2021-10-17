@@ -15,13 +15,13 @@ const Container = props => {
         <div 
             className="bpdre-group"
         >
-            <div className="bpdre-row">
+            <div className="bpdre-row jcsb">
                 <div
                     style={{
                         fontWeight: children.length == 0 ? 0 : 700
                     }}
                 >{title}</div>
-                <div>
+                <div className="text-center">
                     {value}
                 </div>
             </div>

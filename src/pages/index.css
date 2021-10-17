@@ -1,0 +1,17 @@
+.topNav {
+    display: initial;
+}
+
+.bottomNav {
+    display: none;
+}
+
+@media screen and (max-width: 576px) {
+    .topNav {
+        display: none;
+    }
+
+    .bottomNav {
+        display: flex;
+    }
+}

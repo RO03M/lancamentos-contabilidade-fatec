@@ -1,5 +1,5 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import React from "react";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Card as MaterialCard, Typography } from "@mui/material";
 
 import "./index.css";
 
@@ -13,8 +13,8 @@ const Card = props => {
     } = props;
 
     return (
-        <div className="reason-card">
-            <h2 className="text-center">{title}</h2>
+        <MaterialCard>
+            <Typography align="center" variant="button" component="div" style={{fontSize: "20px", fontWeight: 700}}>{title}</Typography>
             <TableContainer>
                 <Table>
                     <TableHead>
@@ -70,7 +70,7 @@ const Card = props => {
                     </TableBody>
                 </Table>
             </TableContainer>
-        </div>
+        </MaterialCard>
     );
 }
 

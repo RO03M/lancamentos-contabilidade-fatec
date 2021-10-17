@@ -1,6 +1,7 @@
 import React from "react";
 import Active from "./Active";
 import Passive from "./Passive";
+import Results from "./Results";
 
 const List = props => {
 
@@ -9,11 +10,18 @@ const List = props => {
     } = props;
 
     return (
-        <div>
+        <div
+            style={{
+                padding: "10px"
+            }}
+        >
             <Active
                 reasonList={reasonList}
             />
             <Passive
+                reasonList={reasonList}
+            />
+            <Results
                 reasonList={reasonList}
             />
         </div>
