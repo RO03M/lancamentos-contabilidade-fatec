@@ -40,6 +40,7 @@ const Reasons = () => {
                             title={key}
                             debts={value.debts}
                             credits={value.credits}
+                            key={key}
                         />);
                     }
                     return cards;

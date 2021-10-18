@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
-    data: []
+    data: [],
+    theme: "dark"
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -25,6 +26,15 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 data: [...data]
             };
+        } case "SwitchTheme": {
+            if (state.theme === "dark") return {
+                ...state,
+                theme: "light"
+            };
+            else if (state.theme === "light") return {
+                ...state,
+                theme: "dark"
+            }
         }
         default:
             return {

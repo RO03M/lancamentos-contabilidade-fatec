@@ -12,3 +12,7 @@ export const DeleteData = data => ({
     type: "DeleteData",
     id: data
 });
+
+export const SwitchTheme = () => ({
+    type: "SwitchTheme"
+});

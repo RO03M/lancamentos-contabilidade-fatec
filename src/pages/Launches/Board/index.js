@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FormControl, IconButton, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import { FormControl, IconButton, InputLabel, MenuItem, Select, TableCell, TableRow, TextField } from "@mui/material";
 import { LEDGER_REFS } from "../../../data";
 import { UpdateData, DeleteData } from "../../../actions/AppActions";
 import { useDispatch } from "react-redux";
@@ -16,7 +16,7 @@ const Board = props => {
     const [item, SetItem] = useState("");
     const [registerType, SetRegisterType] = useState("");
     const [ledgerType, SetLedgerType] = useState("");
-    const [debt, SetDebt] = useState("");
+    const [debt, SeTableCellebt] = useState("");
     const [credit, SetCredit] = useState("");
 
     const INITIAL_RENDER_FLAG = useRef(true);
@@ -24,33 +24,40 @@ const Board = props => {
     const dispatch = useDispatch();
     const location = useLocation();
 
+    const currentTab = useRef(new URLSearchParams(location.search).get("tab"));
+
     useEffect(() => {
         if (INITIAL_RENDER_FLAG.current) {
             INITIAL_RENDER_FLAG.current = false;
             return;
         }
-        let data = {
-            item: item,
-            registerType: registerType,
-            ledgerType: ledgerType,
-            debt: debt,
-            credit: credit,
-            id: id
-        };
-        dispatch(UpdateData(data));
+
+        if (currentTab.current == 0 && ledgerType && (debt || credit)) {
+            let data = {
+                item: item,
+                registerType: registerType,
+                ledgerType: ledgerType,
+                debt: debt,
+                credit: credit,
+                id: id
+            };
+            dispatch(UpdateData(data));
+        }
+
+        currentTab.current = new URLSearchParams(location.search).get("tab");
     }, [location]);//item, registerType, ledgerType, debt, credit
 
     return (
-        <tr>
-            <td>
+        <TableRow>
+            <TableCell>
                 <TextField
                     variant="filled"
                     label="Item"
                     value={item}
                     onChange={e => SetItem(e.target.value)}
                 />
-            </td>
-            <td>
+            </TableCell>
+            <TableCell>
                 <FormControl variant="filled" sx={{ minWidth: 120 }}>
                     <InputLabel>D/C</InputLabel>
                     <Select
@@ -62,8 +69,8 @@ const Board = props => {
                         <MenuItem value="C">C</MenuItem>
                     </Select>
                 </FormControl>
-            </td>
-            <td>
+            </TableCell>
+            <TableCell>
                 <FormControl variant="filled" sx={{ minWidth: 240 }}>
                     <InputLabel>Conta Contábil</InputLabel>
                     <Select
@@ -80,29 +87,29 @@ const Board = props => {
                         ))}
                     </Select>
                 </FormControl>
-            </td>
-            <td>
+            </TableCell>
+            <TableCell>
                 <TextField
                     variant="filled"
                     value={debt}
                     label="Débito"
-                    onChange={e => SetDebt(e.target.value)}
+                    onChange={e => SeTableCellebt(e.target.value)}
                 />
-            </td>
-            <td>
+            </TableCell>
+            <TableCell>
                 <TextField
                     variant="filled"
                     label="Crédito"
                     value={credit}
                     onChange={e => SetCredit(e.target.value)}
                 />
-            </td>
-            <td style={{verticalAlign: "middle"}}>
+            </TableCell>
+            <TableCell style={{verticalAlign: "middle"}}>
                 <IconButton onClick={() => dispatch(DeleteData(id))}>
                     <DeleteIcon/>    
                 </IconButton>
-            </td>
-        </tr>
+            </TableCell>
+        </TableRow>
     );
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "@mui/material";
+import { Button, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Table as MaterialTable } from "@mui/material";
 import Board from "../Board";
 import { useDispatch, useSelector } from "react-redux";
 import { AddData } from "../../../actions/AppActions";
@@ -28,19 +28,19 @@ const Table = props => {
 
     return (
         <div>
-            <div className="table-responsive">
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>D/C</th>
-                            <th>Conta contábil</th>
-                            <th>Débito</th>
-                            <th>Crédito</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <TableContainer component={Paper}>
+                <MaterialTable>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Item</TableCell>
+                            <TableCell>D/C</TableCell>
+                            <TableCell>Conta contábil</TableCell>
+                            <TableCell>Débito</TableCell>
+                            <TableCell>Crédito</TableCell>
+                            <TableCell></TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
                         {(() => {
                             let elements = [];
                             for (let i = 0; i < data.length; i++) {
@@ -51,9 +51,9 @@ const Table = props => {
                             }
                             return elements;
                         })()}
-                    </tbody>
-                </table>
-            </div>
+                    </TableBody>
+                </MaterialTable>
+            </TableContainer>
             <Button
                 onClick={AddRow}
             >Adicionar Linha</Button>

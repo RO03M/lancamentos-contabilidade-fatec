@@ -13,7 +13,7 @@ const Card = props => {
     } = props;
 
     return (
-        <MaterialCard>
+        <MaterialCard raised>
             <Typography align="center" variant="button" component="div" style={{fontSize: "20px", fontWeight: 700}}>{title}</Typography>
             <TableContainer>
                 <Table>
