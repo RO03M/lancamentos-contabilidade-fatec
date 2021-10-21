@@ -5,4 +5,11 @@
 
 .bpdre-children {
     margin-left: 15px;
+    border-left: 1px solid;
+    padding-left: 11px;
+}
+
+.bpdre-value {
+    user-select: none;
+    cursor: pointer;
 }

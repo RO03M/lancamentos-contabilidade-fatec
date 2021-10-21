@@ -12,15 +12,28 @@ import {
 } from "react-router-dom";
 import MainPage from "./pages";
 
+const lightPalette = {
+    
+}
+
+const darkPalette = {
+    primary: {
+        main: "#4527a0",
+        dark: "#311b92",
+        contrastText: "#fff"
+    }
+}
+
 function App() {
 
     const theme = useSelector(store => store.AppReducer.theme);
 
     const themeMode = React.useMemo(() => createTheme({
         palette: {
-            mode: theme
+            mode: theme,
+            ...(theme === "dark" ? darkPalette : lightPalette)
         }
-    }, []));
+    }, [theme]));
 
     return (
         <div className="App">

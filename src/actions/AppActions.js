@@ -13,6 +13,11 @@ export const DeleteData = data => ({
     id: data
 });
 
+export const UpdateResumeData = data => ({
+    type: "UpdateResumeData",
+    payload: data
+});
+
 export const SwitchTheme = () => ({
     type: "SwitchTheme"
 });

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Container from "../../Container";
 import { LEDGER_REFS, BPDRE_OBJ } from "../../../../data";
+import { UpdateResumeData } from "../../../../actions/AppActions";
+import { useDispatch } from "react-redux";
 
 const Active = props => {
 
@@ -9,6 +11,8 @@ const Active = props => {
     } = props;
 
     const [list, SetList] = useState({});
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         let data = {
@@ -53,11 +57,21 @@ const Active = props => {
             naoCirculantes: data.realizavelLongoPrazo + data.investimentos + data.imobilizado + data.intangivel
         });
 
+        Object.assign(data, {
+            ativo: data.circulante + data.naoCirculantes
+        });
+
+        dispatch(UpdateResumeData({
+            ativo: data.ativo,
+            ativoCirculante: data.circulante,
+            ativoImobilizado: data.naoCirculantes
+        }));
+
         SetList(...[data]);
     }, [reasonList]);
 
     return (
-        <Container title="ATIVO">
+        <Container title="ATIVO" value={list.ativo}>
             <Container title="CIRCULANTE" value={list.circulante}>
                 <Container title="DISPONÍVEL" value={list.disponivel}>
                     <Container title="Caixa" value={list.caixa}></Container>

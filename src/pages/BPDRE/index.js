@@ -32,7 +32,6 @@ const BPDRE = () => {
             }
         });
         SetReasonList(tempReasonsList);
-        console.log(tempReasonsList);
     }, [data]);
 
     return (

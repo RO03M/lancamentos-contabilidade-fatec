@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { AppBar, BottomNavigation, BottomNavigationAction, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, ListItemButton, Tab, Tabs, Toolbar, Paper } from "@mui/material";
+import React, { useEffect, useRef, useState } from "react";
+import { AppBar, BottomNavigation, BottomNavigationAction, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, ListItemButton, Tab, Tabs, Toolbar, Paper, Fab } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import SwipeableViews from "react-swipeable-views";
@@ -12,10 +12,12 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
+import AddIcon from '@mui/icons-material/Add';
 
 import { SwitchTheme } from "../actions/AppActions";
 
 import "./index.css";
+import Resume from "./Resume";
 
 const MainPage = () => {
 
@@ -25,16 +27,20 @@ const MainPage = () => {
     const history = useHistory();
     const theme = useSelector(store => store.AppReducer.theme);
 
+    const launchesRef = useRef();
+
     const dispatch = useDispatch();
 
     return (
         <Paper className="Menu">
-            <AppBar position="static">
+            <AppBar 
+                position="static"
+            >
                 <Toolbar>
                     <IconButton onClick={() => SetDrawer(true)}>
                         <MenuIcon/>
                     </IconButton>
-                    <div className="topNav w100">
+                    <div className="d-md-block d-none w100">
                         <Tabs
                             value={activeTab}
                             onChange={(_, value) => {
@@ -56,8 +62,9 @@ const MainPage = () => {
                     </div>
                 </Toolbar>
             </AppBar>
+
             <AppBar position="fixed" style={{ top: "auto", bottom: 0 }}>
-                <div className="bottomNav">
+                <div className="d-md-none d-block">
                     <BottomNavigation
                         showLabels
                         value={activeTab}
@@ -69,15 +76,26 @@ const MainPage = () => {
                     >
                         <BottomNavigationAction label="Lançamentos"/>
                         <BottomNavigationAction label="Razão"/>
+                        <Fab
+                            size="medium"
+                            sx={{ alignSelf: "center" }}
+                            color="primary"
+                            onClick={() => launchesRef.current.OpenModal()}
+                            hidden={activeTab !== 0}
+                        >
+                            <AddIcon/>
+                        </Fab>
                         <BottomNavigationAction label="BP e DRE"/>
                         <BottomNavigationAction label="Resumo"/>
                     </BottomNavigation>
                 </div>
             </AppBar>
+
             <Drawer
                 anchor="left"
                 open={drawer}
                 onClose={() => SetDrawer(false)}
+                disableScrollLock
             >
                 <div style={{ padding: "10px" }}>
                     <IconButton onClick={() => dispatch(SwitchTheme())}>
@@ -98,12 +116,15 @@ const MainPage = () => {
                     </ListItem>
                 </List>
             </Drawer>
+
             <SwipeableViews
                 index={activeTab}
                 onChangeIndex={index => SetActiveTab(index)}
             >
                 <div className="launches">
-                    <Launches/>
+                    <Launches
+                        ref={launchesRef}
+                    />
                 </div>
                 <div className="reasons">
                     <Reasons/>
@@ -111,7 +132,27 @@ const MainPage = () => {
                 <div className="bpdre">
                     <BPDRE/>
                 </div>
+                <div className="resume">
+                    <Resume/>
+                </div>
             </SwipeableViews>
+
+            <Fab
+                onClick={() => launchesRef.current.OpenModal()}
+                style={{
+                    position: "fixed",
+                    zIndex: 1000,
+                    right: "20px",
+                    bottom: "20px"
+                }}
+                size="medium"
+                hidden={activeTab !== 0}
+                className="d-md-block d-none"
+                color="primary"
+            >
+                <AddIcon/>
+            </Fab>
+
         </Paper>
     );
 }

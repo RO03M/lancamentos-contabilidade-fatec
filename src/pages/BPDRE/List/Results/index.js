@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Container from "../../Container";
+import { UpdateResumeData } from "../../../../actions/AppActions";
+import { useDispatch } from "react-redux";
 
 const Results = props => {
 
@@ -8,6 +10,8 @@ const Results = props => {
     } = props;
 
     const [list, SetList] = useState({});
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         let data = {
@@ -76,6 +80,13 @@ const Results = props => {
             resultadoOperacional: data.receitasDespesasNaoOperacionais,
             resultadoImpostoRendaContriSocial: data.provisaoImpostosContribuicoes + data.resultado
         });
+
+        dispatch(UpdateResumeData({
+            vendas: data.venda,
+            custosMercadoriasVendidas: data.custosMercadoriasVendidas,
+            despesas: data.despesas,
+            lucroLiquido: data.receitas - data.custo
+        }));
 
         SetList(...[data]);
     }, [reasonList]);

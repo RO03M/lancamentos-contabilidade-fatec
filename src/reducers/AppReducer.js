@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
     data: [],
+    resumeData: [],
     theme: "dark"
 };
 
@@ -21,10 +22,15 @@ export default (state = INITIAL_STATE, action) => {
             };
         } case "DeleteData": {
             let data = state.data.filter(x => x?.id !== action.id);
-
             return {
                 ...state,
                 data: [...data]
+            };
+        } case "UpdateResumeData": {
+            let data = Object.assign(state.resumeData, action.payload);
+            return {
+                ...state,
+                resumeData: data
             };
         } case "SwitchTheme": {
             if (state.theme === "dark") return {

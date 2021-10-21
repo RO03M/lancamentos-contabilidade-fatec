@@ -1,4 +1,5 @@
 import React from "react";
+import { Paper } from "@mui/material";
 import Active from "./Active";
 import Passive from "./Passive";
 import Results from "./Results";
@@ -10,10 +11,12 @@ const List = props => {
     } = props;
 
     return (
-        <div
+        <Paper
             style={{
-                padding: "10px"
+                margin: "10px 5%",
+                padding: "10px 25px"
             }}
+            elevation={4}
         >
             <Active
                 reasonList={reasonList}
@@ -24,7 +27,7 @@ const List = props => {
             <Results
                 reasonList={reasonList}
             />
-        </div>
+        </Paper>
     );
 }
 

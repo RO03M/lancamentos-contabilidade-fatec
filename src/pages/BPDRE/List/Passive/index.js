@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Container from "../../Container";
+import { UpdateResumeData } from "../../../../actions/AppActions";
+import { useDispatch } from "react-redux";
 
 const Passive = props => {
 
@@ -8,6 +10,8 @@ const Passive = props => {
     } = props;
 
     const [list, SetList] = useState({});
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         let data = {
@@ -39,11 +43,21 @@ const Passive = props => {
             patrimonioLiquido: data.capital + data.reservas + data.lucroPrejuizo
         });
 
+        Object.assign(data, {
+            passive: data.circulante + data.naoCirculante + data.patrimonioLiquido
+        });
+
+        dispatch(UpdateResumeData({
+            passivo: data.passive,
+            passivoCirculante: data.circulante,
+            patrimonioLiquido: data.patrimonioLiquido
+        }));
+
         SetList(...[data]);
     }, [reasonList]);
 
     return (
-        <Container title="PASSIVO">
+        <Container title="PASSIVO" value={list.passive}>
             <Container title="CIRCULANTE" value={list.circulante}>
                 <Container title="OBRIGAÇÕES" value={list.obrigacoes}>
                     <Container title="Salários à Pagar" value={list.salPagar}></Container>

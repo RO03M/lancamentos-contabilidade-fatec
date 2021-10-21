@@ -1,0 +1,2 @@
+por enquanto cada item da lista está com os inputs para serem digitados, mais prático é deixar apenas um input dentro de um modal que se abre após clicar no fab centralizado
+substituir a tabela pelo datagrid

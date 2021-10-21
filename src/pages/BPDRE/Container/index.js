@@ -1,3 +1,4 @@
+import { Tooltip, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
 import "./index.css";
@@ -16,14 +17,24 @@ const Container = props => {
             className="bpdre-group"
         >
             <div className="bpdre-row jcsb">
-                <div
+                <Typography
                     style={{
-                        fontWeight: children.length == 0 ? 0 : 700
+                        fontWeight: children.length == 0 ? 0 : 700,
+                        fontSize: children.length == 0 ? "14px" : "18px"
                     }}
-                >{title}</div>
-                <div className="text-center">
-                    {value}
-                </div>
+                    variant="button"
+                >
+                    {title}
+                </Typography>
+                <Tooltip
+                    title={`Valor de ${title}`}
+                    placement="left"
+                    arrow
+                >
+                    <div className="bpdre-value text-center">
+                        {value}
+                    </div>
+                </Tooltip>
             </div>
             <div className="bpdre-children">
                 {children}
