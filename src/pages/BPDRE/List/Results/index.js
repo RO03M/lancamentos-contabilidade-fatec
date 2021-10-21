@@ -85,7 +85,7 @@ const Results = props => {
             vendas: data.venda,
             custosMercadoriasVendidas: data.custosMercadoriasVendidas,
             despesas: data.despesas,
-            lucroLiquido: data.receitas - data.custo
+            lucroLiquido: parseFloat(data.receitas) - parseFloat(data.custo)
         }));
 
         SetList(...[data]);

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Paper } from "@mui/material";
+import { Paper, Card, CardContent, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 
 const Resume = () => {
@@ -10,7 +10,20 @@ const Resume = () => {
 
     return (
         <Paper>
-
+            <Card>
+                <CardContent>
+                    <Typography>Valor do ativo: {resumeData?.ativo}</Typography>
+                    <Typography>Valor do ativo circulante: {resumeData?.ativoCirculante}</Typography>
+                    <Typography>Valor do ativo imobilizado: {resumeData?.ativoImobilizado}</Typography>
+                    <Typography>Valor do passivo: {resumeData?.passivo}</Typography>
+                    <Typography>Valor do passivo circulante: {resumeData?.passivoCirculante}</Typography>
+                    <Typography>Valor do patrimônio líquido: {resumeData?.patrimonioLiquido}</Typography>
+                    <Typography>Valor das vendas: {resumeData?.vendas}</Typography>
+                    <Typography>Valor dos custos das mercadorias vendidas: {resumeData?.custosMercadoriasVendidas}</Typography>
+                    <Typography>Valor das despesas: {resumeData?.despesas}</Typography>
+                    <Typography>Valor do lucro líquido: {resumeData?.lucroLiquido}</Typography>
+                </CardContent>
+            </Card>
         </Paper>
     );
 }

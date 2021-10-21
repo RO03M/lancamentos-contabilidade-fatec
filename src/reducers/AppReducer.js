@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
     data: [],
-    resumeData: [],
+    resumeData: {},
     theme: "dark"
 };
 

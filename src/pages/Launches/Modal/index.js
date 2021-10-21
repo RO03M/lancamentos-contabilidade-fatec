@@ -39,14 +39,10 @@ const Modal = props => {
             {...other}
             onBackdropClick={onClose}
             onClose={onClose}
+            fullWidth
         >
             <DialogTitle>Adicionar lançamento</DialogTitle>
-            <DialogContent 
-                className="flex fdcolumn"
-                sx={{
-                    minWidth: "450px"
-                }}
-            >
+            <DialogContent className="flex fdcolumn">
                 <TextField
                     variant="filled"
                     label="Item"

@@ -19,41 +19,10 @@ const Board = props => {
         onChange
     } = props;
 
-    // const [item, SetItem] = useState("");
-    // const [registerType, SetRegisterType] = useState("");
-    // const [ledgerType, SetLedgerType] = useState("");
-    // const [debt, SetDebt] = useState("");
-    // const [credit, SetCredit] = useState("");
     const [modal, SetModal] = useState(false);
 
-    // const INITIAL_RENDER_FLAG = useRef(true);
-
     const dispatch = useDispatch();
-    // const location = useLocation();
-
-    // const currentTab = useRef(new URLSearchParams(location.search).get("tab"));
-
-    // useEffect(() => {
-    //     if (INITIAL_RENDER_FLAG.current) {
-    //         INITIAL_RENDER_FLAG.current = false;
-    //         return;
-    //     }
-
-    //     if (currentTab.current == 0 && ledgerType && (debt || credit)) {
-    //         let data = {
-    //             item: item,
-    //             registerType: registerType,
-    //             ledgerType: ledgerType,
-    //             debt: debt,
-    //             credit: credit,
-    //             id: id
-    //         };
-    //         dispatch(UpdateData(data));
-    //     }
-
-    //     currentTab.current = new URLSearchParams(location.search).get("tab");
-    // }, [location]);
-
+    
     return (
         <TableRow id={id}>
             <TableCell>{item}</TableCell>

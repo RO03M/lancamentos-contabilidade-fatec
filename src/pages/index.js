@@ -54,10 +54,10 @@ const MainPage = () => {
                             textColor="inherit"
                             variant="scrollable"
                         >
-                            <Tab label="Lançamentos"/>
-                            <Tab label="Razão"/>
-                            <Tab label="BP e DRE"/>
-                            <Tab label="Resumo"/>
+                            <Tab label="Lançamentos" index={0}/>
+                            <Tab label="Razão" index={1}/>
+                            <Tab label="BP e DRE" index={2}/>
+                            <Tab label="Resumo" index={3}/>
                         </Tabs>
                     </div>
                 </Toolbar>
@@ -76,15 +76,6 @@ const MainPage = () => {
                     >
                         <BottomNavigationAction label="Lançamentos"/>
                         <BottomNavigationAction label="Razão"/>
-                        <Fab
-                            size="medium"
-                            sx={{ alignSelf: "center" }}
-                            color="primary"
-                            onClick={() => launchesRef.current.OpenModal()}
-                            hidden={activeTab !== 0}
-                        >
-                            <AddIcon/>
-                        </Fab>
                         <BottomNavigationAction label="BP e DRE"/>
                         <BottomNavigationAction label="Resumo"/>
                     </BottomNavigation>
@@ -152,6 +143,33 @@ const MainPage = () => {
             >
                 <AddIcon/>
             </Fab>
+
+            <Fab
+                onClick={() => launchesRef.current.OpenModal()}
+                style={{
+                    position: "fixed",
+                    zIndex: 9999,
+                    transform: "translate(-50%, -50%)",
+                    left: "50%",
+                    bottom: "10px"
+                }}
+                size="medium"
+                hidden={activeTab !== 0}
+                className="d-md-none d-block"
+                color="primary"
+            >
+                <AddIcon/>
+            </Fab>
+
+            {/* <Fab
+                            size="medium"
+                            sx={{ alignSelf: "center" }}
+                            color="primary"
+                            onClick={() => launchesRef.current.OpenModal()}
+                            hidden={activeTab !== 0}
+                        >
+                            <AddIcon/>
+                        </Fab> */}
 
         </Paper>
     );
