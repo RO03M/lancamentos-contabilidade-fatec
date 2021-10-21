@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/lancamentos-contabilidade-fatec/static/css/main.f5fed939.chunk.css",
-    "main.js": "/lancamentos-contabilidade-fatec/static/js/main.f0b57997.chunk.js",
-    "main.js.map": "/lancamentos-contabilidade-fatec/static/js/main.f0b57997.chunk.js.map",
-    "runtime-main.js": "/lancamentos-contabilidade-fatec/static/js/runtime-main.41336989.js",
-    "runtime-main.js.map": "/lancamentos-contabilidade-fatec/static/js/runtime-main.41336989.js.map",
-    "static/js/2.63c675c8.chunk.js": "/lancamentos-contabilidade-fatec/static/js/2.63c675c8.chunk.js",
-    "static/js/2.63c675c8.chunk.js.map": "/lancamentos-contabilidade-fatec/static/js/2.63c675c8.chunk.js.map",
-    "static/js/3.36963716.chunk.js": "/lancamentos-contabilidade-fatec/static/js/3.36963716.chunk.js",
-    "static/js/3.36963716.chunk.js.map": "/lancamentos-contabilidade-fatec/static/js/3.36963716.chunk.js.map",
+    "main.css": "/lancamentos-contabilidade-fatec/static/css/main.4a20bfb6.chunk.css",
+    "main.js": "/lancamentos-contabilidade-fatec/static/js/main.eb5c0999.chunk.js",
+    "main.js.map": "/lancamentos-contabilidade-fatec/static/js/main.eb5c0999.chunk.js.map",
+    "runtime-main.js": "/lancamentos-contabilidade-fatec/static/js/runtime-main.432fd037.js",
+    "runtime-main.js.map": "/lancamentos-contabilidade-fatec/static/js/runtime-main.432fd037.js.map",
+    "static/js/2.fdf8fbaf.chunk.js": "/lancamentos-contabilidade-fatec/static/js/2.fdf8fbaf.chunk.js",
+    "static/js/2.fdf8fbaf.chunk.js.map": "/lancamentos-contabilidade-fatec/static/js/2.fdf8fbaf.chunk.js.map",
+    "static/js/3.ff9c407c.chunk.js": "/lancamentos-contabilidade-fatec/static/js/3.ff9c407c.chunk.js",
+    "static/js/3.ff9c407c.chunk.js.map": "/lancamentos-contabilidade-fatec/static/js/3.ff9c407c.chunk.js.map",
     "index.html": "/lancamentos-contabilidade-fatec/index.html",
-    "static/css/main.f5fed939.chunk.css.map": "/lancamentos-contabilidade-fatec/static/css/main.f5fed939.chunk.css.map",
-    "static/js/2.63c675c8.chunk.js.LICENSE.txt": "/lancamentos-contabilidade-fatec/static/js/2.63c675c8.chunk.js.LICENSE.txt"
+    "static/css/main.4a20bfb6.chunk.css.map": "/lancamentos-contabilidade-fatec/static/css/main.4a20bfb6.chunk.css.map",
+    "static/js/2.fdf8fbaf.chunk.js.LICENSE.txt": "/lancamentos-contabilidade-fatec/static/js/2.fdf8fbaf.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.41336989.js",
-    "static/js/2.63c675c8.chunk.js",
-    "static/css/main.f5fed939.chunk.css",
-    "static/js/main.f0b57997.chunk.js"
+    "static/js/runtime-main.432fd037.js",
+    "static/js/2.fdf8fbaf.chunk.js",
+    "static/css/main.4a20bfb6.chunk.css",
+    "static/js/main.eb5c0999.chunk.js"
   ]
 }
