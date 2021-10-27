@@ -3,6 +3,15 @@ export const AddData = data => ({
     payload: data
 });
 
+export const Reset = () => ({
+    type: "Reset"
+});
+
+export const AddDataArray = data => ({
+    type: "AddDataArray",
+    payload: data
+});
+
 export const UpdateData = data => ({
     type: "UpdateData",
     payload: data

@@ -11,6 +11,7 @@ const Reasons = () => {
     const data = useSelector(store => store.AppReducer.data);
 
     useEffect(() => {
+        // console.log(data)
         let tempReasonsList = {};
         data.map(x => {
             if (!x?.ledgerType) return;

@@ -22,7 +22,7 @@ const Active = props => {
             poupanca: reasonList["Poupança"] ? reasonList["Poupança"]?.balance : 0,
             adiantamentosFuncionarios: reasonList["Adiantamentos a Funcionários"] ? reasonList["Adiantamentos a Funcionários"]?.balance : 0,
             adiantamentosFornecedor: reasonList["Adiantamentos a Fornecedor"]?.balance ?? 0,
-            mercadoriaRevenda: reasonList["Mercadoria pra Revenda"]?.balance ?? 0,
+            mercadoriaRevenda: reasonList["Mercadoria para Revenda"]?.balance ?? 0,
             segurosVencer: reasonList["Seguros à Vencer"]?.balance ?? 0,
             assinaturasRevistas: reasonList["Assinaturas de Revistas"]?.balance ?? 0,
             titulosReceber: reasonList["Títulos à Receber"]?.balance ?? 0,
@@ -66,7 +66,6 @@ const Active = props => {
             ativoCirculante: data.circulante,
             ativoImobilizado: data.naoCirculantes
         }));
-
         SetList(...[data]);
     }, [reasonList]);
 

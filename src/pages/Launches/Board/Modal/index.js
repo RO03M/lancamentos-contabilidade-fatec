@@ -39,11 +39,6 @@ const Modal = props => {
         onClose();
     }
 
-    useEffect(() => {
-        // console.log(_item);
-        // console.log(item)
-    })
-
     return (
         <Dialog
             {...other}

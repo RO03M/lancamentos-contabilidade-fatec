@@ -71,21 +71,6 @@ const Table = React.forwardRef((props, ref) => {
             />);
         }
         SetBoardList(...[elements]);
-        // let tempRows = [];
-        // for (let i = 0; i < data.length; i++) {
-        //     tempRows.push({
-        //         id: data[i]?.id,
-        //         item: data[i]?.item,
-        //         registerType: data[i]?.registerType,
-        //         ledgerType: data[i]?.ledgerType,
-        //         debt: data[i]?.debt,
-        //         credit: data[i]?.credit,
-        //         actions: <IconButton>t</IconButton>
-        //     });
-        // }
-        // console.log(data)
-        // console.log(tempRows);
-        // SetRows(...[tempRows]);
     }, [data])
 
     return (

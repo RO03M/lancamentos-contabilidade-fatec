@@ -51,7 +51,7 @@ const Board = props => {
                     color="error"
                     onClick={() => dispatch(DeleteData(id))}
                 >
-                    <DeleteIcon/>    
+                    <DeleteIcon/>
                 </IconButton>
             </TableCell>
         </TableRow>

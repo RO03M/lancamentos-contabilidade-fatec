@@ -15,13 +15,14 @@ const Results = props => {
 
     useEffect(() => {
         let data = {
-            venda: reasonList["Venda"]?.balance ?? 0,
+            venda: Math.abs(reasonList["Venda"]?.balance ?? 0) + Math.abs(reasonList["Venda de Mercadoria"]?.balance ?? 0),
             icmsVendas: reasonList["ICMS sobre Vendas"]?.balance ?? 0,
             cofins: reasonList["Cofins"]?.balance ?? 0,
             pis: reasonList["Pis"]?.balance ?? 0,
             vendasCaneladas: reasonList["Vendas Caneladas"]?.balance ?? 0,
             devolucaoVendas: reasonList["Devolução de Vendas"]?.balance ?? 0,
             custosMercadoriasVendidas: reasonList["Custos das Mercadorias Vendidas"]?.balance ?? 0,
+
             comissoesVendas: reasonList["Comissões sobre Vendas"]?.balance ?? 0,
             propagandaPublicidade: reasonList["Propaganda e Publicidade"]?.balance ?? 0,
             salariosOrdenados: reasonList["Salários e Ordenados"]?.balance ?? 0,
@@ -38,21 +39,25 @@ const Results = props => {
             materialEscritorio: reasonList["Material de Escritório"]?.balance ?? 0,
             refeicoesLanches: reasonList["Refeições e Lanches"]?.balance ?? 0,
             revistasPublicacoes: reasonList["Revistas e Publicações"]?.balance ?? 0,
+
             despesasFinanceiras: reasonList["Despesas Financeiras"]?.balance ?? 0,
             receitasFinanceiras: reasonList["Receitas Financeiras"]?.balance ?? 0,
+
             ganhosAlienacaoImobilizado: reasonList["Ganhos na Alienação do Imobilizado"]?.balance ?? 0,
             valorLiquidoBensBaixado: reasonList["Valor Líquido de Bens Baixado"]?.balance ?? 0,
+
             perdasAlienacaoImobilizado: reasonList["Perdas na Alienação do Imobilizado"]?.balance ?? 0,
+
             irpj: reasonList["IRPJ"]?.balance ?? 0,
             irpjAdicional: reasonList["IRPJ - Adicional"]?.balance ?? 0,
-            csll: reasonList["CSLL"]?.balance ?? 0,
-            lucroPrejuizoExercicio: reasonList["Lucro ou Prejuízo do Exercício"]?.balance ?? 0
+            csll: reasonList["CSLL"]?.balance ?? 0
         };
 
         Object.assign(data, {
             receitasOperacionais: data.venda,
-            deducoesReceitasVendas: data.icmsVendas + data.cofins + data.pis + data.vendasCaneladas + data.devolucaoVendas,
+            deducoesReceitasVendas: data.icmsVendas + data.cofins + data.pis + data.vendasCaneladas + data.devolucaoVendas,//
             custosMercadorias: data.custosMercadoriasVendidas,
+
             despesasVendas: data.comissoesVendas + data.propagandaPublicidade,
             despesasAdmin: data.salariosOrdenados + data.aluguel + data.depreciacao + data.manutencaoReparos + data.agua + data.correio + data.energiaEletrica + data.seguros + data.telefone + data.transportePessoal + data.proLabore + data.materialEscritorio + data.refeicoesLanches + data.revistasPublicacoes,
             resultadoFinanceiroLiquido: data.despesasFinanceiras + data.receitasFinanceiras,
@@ -60,7 +65,7 @@ const Results = props => {
             receitasNaoOperacionais: data.ganhosAlienacaoImobilizado + data.valorLiquidoBensBaixado,
             despesasNaoOperacionais: data.perdasAlienacaoImobilizado + data.valorLiquidoBensBaixado,
             impostosContribuicoes: data.irpj + data.irpjAdicional + data.csll,
-            resultadoExercicio: data.lucroPrejuizoExercicio
+            resultadoExercicio: data.lucroPrejuizoExercicio///////////
         });
 
         Object.assign(data, {
@@ -70,22 +75,30 @@ const Results = props => {
             despesas: data.despesasVendas + data.despesasAdmin + data.resultadoFinanceiroLiquido,
             receitasDespesasNaoOperacionais: data.receitasNaoOperacionais + data.despesasNaoOperacionais,
             provisaoImpostosContribuicoes: data.impostosContribuicoes,
-            resultado: data.resultadoExercicio
+            resultado: data.resultadoExercicio///////////////
         });
+
+        const receitaLiquida = Math.abs(data.receitas - data.deducoes);
+        const lucroBruto = Math.abs(receitaLiquida - data.custos); 
+        const resultadoOperacional = Math.abs(lucroBruto - data.despesas);
+        const resultadoAntesImposto = Math.abs(resultadoOperacional - data.receitasDespesasNaoOperacionais);
+        const lucroPrejuizoExercicio = Math.abs(resultadoAntesImposto - data.provisaoImpostosContribuicoes);
 
         Object.assign(data, {
             demonstracaoResultadoExercicio: data.receitas + data.deducoes,
-            receitaLiquida: data.custos,
-            lucroBruto: data.despesas,
-            resultadoOperacional: data.receitasDespesasNaoOperacionais,
-            resultadoImpostoRendaContriSocial: data.provisaoImpostosContribuicoes + data.resultado
+            receitaLiquida: receitaLiquida,
+            lucroBruto: lucroBruto,
+            resultadoOperacional: resultadoOperacional,
+            resultadoImpostoRendaContriSocial: lucroPrejuizoExercicio,
+            lucroPrejuizoExercicio: lucroPrejuizoExercicio
         });
 
         dispatch(UpdateResumeData({
             vendas: data.venda,
             custosMercadoriasVendidas: data.custosMercadoriasVendidas,
             despesas: data.despesas,
-            lucroLiquido: parseFloat(data.receitas) - parseFloat(data.custo)
+            lucroLiquido: lucroPrejuizoExercicio,
+            // lucroLiquido: data.demonstracaoResultadoExercicio - (data.receitaLiquida + data.lucroBruto)
         }));
 
         SetList(...[data]);
